@@ -89,6 +89,9 @@ function initDouban() {
         
         // 初始更新显示状态
         updateDoubanVisibility();
+
+        // 滚动到页面顶部
+        window.scrollTo(0, 0);
     }
 
     // 加载用户标签
@@ -286,7 +289,7 @@ function renderDoubanTags(tags) {
 
     // 先添加标签管理按钮
     const manageBtn = document.createElement('button');
-    manageBtn.className = 'py-1.5 px-3.5 rounded text-sm font-medium transition-all duration-300 bg-[#1a1a1a] text-gray-300 hover:bg-pink-700 hover:text-white';
+    manageBtn.className = 'py-1.5 px-3.5 rounded text-sm font-medium transition-all duration-300 bg-[#1a1a1a] text-gray-300 hover:bg-pink-700 hover:text-white border border-[#333] hover:border-white';
     manageBtn.innerHTML = '<span class="flex items-center"><svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>管理标签</span>';
     manageBtn.onclick = function() {
         showTagManageModal();
@@ -298,13 +301,13 @@ function renderDoubanTags(tags) {
         const btn = document.createElement('button');
         
         // 设置样式
-        let btnClass = 'py-1.5 px-3.5 rounded text-sm font-medium transition-all duration-300 ';
+        let btnClass = 'py-1.5 px-3.5 rounded text-sm font-medium transition-all duration-300 border ';
         
         // 当前选中的标签使用高亮样式
         if (tag === doubanCurrentTag) {
-            btnClass += 'bg-pink-600 text-white shadow-md';
+            btnClass += 'bg-pink-600 text-white shadow-md border-white';
         } else {
-            btnClass += 'bg-[#1a1a1a] text-gray-300 hover:bg-pink-700 hover:text-white';
+            btnClass += 'bg-[#1a1a1a] text-gray-300 hover:bg-pink-700 hover:text-white border-[#333] hover:border-white';
         }
         
         btn.className = btnClass;
@@ -556,7 +559,7 @@ function showTagManageModal() {
     // 创建模态框元素
     modal = document.createElement('div');
     modal.id = 'tagManageModal';
-    modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
+    modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-40';
     
     // 当前使用的标签类型和默认标签
     const isMovie = doubanMovieTvCurrentSwitch === 'movie';
